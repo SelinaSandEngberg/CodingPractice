@@ -1,0 +1,32 @@
+# kth largest element
+
+arr = [1,4,5,8,9,2]
+k = 3
+
+#Solution 1 (Remove max element each iteration): O(kn)
+def kth_largest(arr, k):
+    for i in range(k-1):
+        arr.remove(max(arr))
+    return max(arr)
+# Not the best solution. A bit too slow
+
+
+#  Solution 2 (sort the array): O(nlogn)
+def kth_largest(arr, k):
+    n = len(arr)
+    arr.sort()
+    return arr[n-k]
+
+# Solution 3 (arrange it in a heap structure): O(n +klogn) 
+import heapq 
+
+def kth_largest(arr, k):  
+    arr = [-elem for elem in arr] #heapq is implemented with min heap not a max heap so add - at the beginning # o(n) 
+    heapq.heapify(arr) # o(n)
+    for i in range(k - 1): # o(k-1)
+        heapq.heappop(arr) # o(logn) 
+    return -heapq.heappop(arr) # o(logn) 
+    
+    
+    
+    
