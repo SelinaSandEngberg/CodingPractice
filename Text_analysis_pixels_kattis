@@ -1,0 +1,40 @@
+# Written in Ruby
+
+a = "*.*.*.*.*.*.*.*.*"
+b = "*..*.*.*.*.*.*.*.*"
+c = "*..*..*"
+d = "*"
+e = "***"
+f = "*.**"
+t = 1
+STDIN.each_line do |line|
+    string = line
+    #string = c
+    if string == "END"
+        break 
+    end
+    counts = []
+    last = ''
+    count = 0
+    arr = string.split("")
+    arr.each_with_index do | c, index |
+    #for c in arr do
+        if c == '.'
+            count += 1
+        elsif c == '*'
+            if last != ''
+                counts.append(count)
+            count = 0
+            end
+        last = c
+        end
+    end
+    if counts.length == 0 or counts.length > 0 and counts.min == counts.max
+        puts t.to_s + ' ' + 'EVEN'
+    else 
+        puts t.to_s + ' ' + 'NOT EVEN'
+        # count.to_s
+    end
+    t += 1
+    
+end
