@@ -1,0 +1,27 @@
+
+
+# Reverse 
+
+
+
+# Solution (comparing arrays): O(n)
+def split(word):
+    return [char for char in word]
+
+#s1 = 'alla'
+
+def check_palindrom (string): 
+  arr = split(string)
+  res = arr[::-1]
+  #if(len(arr) != len(res)):
+   # return "Not Palindrom"
+  print(arr)
+  print(res)
+  if(arr==res):
+      return "Palindrom"
+  else:
+      return "Not Palindrom"
+
+print(check_palindrom ('alla'))
+print(check_palindrom ('madam'))
+print(check_palindrom ('German'))
