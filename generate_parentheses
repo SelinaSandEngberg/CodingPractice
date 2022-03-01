@@ -1,0 +1,44 @@
+# Python
+# A combination that contains 1 type of parehtheses is valid if every opening parenthesis has its closing parenthesis, 
+# and it dosen't have a closing parenthesis withouth having an unused opening parenthesis before it
+
+n = 6
+# Time = 2^k * T (n-k) + (2^k - 1) = O(n*2^n) <-- if no conditions 
+# S(n) = n + 1 (call stack size) + n* 2^n (combs array size) = O(n*2^n) 
+# diff is the balance between '(' and ')'. Must be zero by the end and never be less than zero during the function. 
+def generate(n):
+    def rec(n, diff, comb, combs):  
+        if diff < 0 or diff > n:
+            return
+        elif n == 0:
+            if diff == 0:
+                combs.append(''.join(comb))
+        else:
+            comb.append('(')
+            rec(n-1, diff+1, comb, combs)
+            comb.pop()
+            comb.append(')')
+            rec(n-1, diff-1, comb, combs)
+            comb.pop()
+    combs = []
+    rec(2*n, 0, [], combs)
+    return combs
+    
+    # Method to check if a combination is valid
+    
+    # Condition 1: not trying to pop from an empty stack 
+    # (otherwise it means that we found a closing parenthesis without an opening one from it
+    
+    # Condition 2: Stack must be empty at the end
+    #otherwise it means that the opening parentheses that we didn't close
+    def is_valid(combination):
+      stack = []
+      for par in combination: 
+        if par == '(':
+          stack.append(par)
+        else:
+          if len(stack) == 0: 
+            return False
+          else: 
+            Stack.pop()
+       return len(stack) == 0
