@@ -1,0 +1,23 @@
+
+from collections import Counter
+
+Solution 1 (using a sorting algorithm): O(n)
+
+# Pyhton 
+s1 = bus
+s2 = sub
+def are_anagramsSort(s1, s2):
+    if len(s1) != len(s2):  #check if the length of the words are the same
+        return False
+    return sorted(s1) == sorted(s2)
+print(are_anagramsSort("bus", "sub"))
+    
+Solution 2 (Using a counter): O(n)
+
+# Pyhton 
+def are_anagramsCount(s1, s2):
+    if len(s1) != len(s2): #check if the length of the words are the same
+        return False
+    return Counter(s1) == Counter(s2) # Counter is a python function that generates a table with a key and it's value. ex: (a,2)
+    
+print(are_anagrams("bus", "sub"))
